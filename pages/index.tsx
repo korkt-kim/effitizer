@@ -1,4 +1,4 @@
-import type { NextPage } from 'next';
+import type { GetServerSideProps, NextPage } from 'next';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
@@ -7,7 +7,13 @@ import Image from '../components/Image';
 import ArrowIcon from '../components/ArrowIcon';
 import classNames from 'classnames';
 
-export async function getServerSideProps(context) {
+type CategoryList = { id: number; name: string }[];
+
+type Props = { categories: CategoryList };
+
+export const getServerSideProps: GetServerSideProps<Props> = async (
+  context
+) => {
   const categories = await (
     await fetch(process.env.API_HOST + '/category')
   ).json();
@@ -15,11 +21,9 @@ export async function getServerSideProps(context) {
   return {
     props: { categories },
   };
-}
+};
 
-type CategoryList = { id: number; name: string }[];
-
-const Home: NextPage<{ categories: CategoryList }> = ({ categories }) => {
+const Home: NextPage<Props> = ({ categories }) => {
   const { query, pathname } = useRouter();
   const selectedCategory = Number.isInteger(Number(query.category))
     ? Number(query.category)
