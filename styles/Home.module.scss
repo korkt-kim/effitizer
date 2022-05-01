@@ -1,15 +1,13 @@
-.container {
-  padding: 0 2rem;
-}
+@import 'mixins';
+
+$container-padding: 1.25rem;
+$category-list-gap: 0.75rem;
 
 .main {
-  min-height: 100vh;
-  padding: 4rem 0;
-  flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  align-items: stretch;
+  padding: $container-padding;
 }
 
 .footer {
@@ -43,11 +41,6 @@
   margin: 0;
   line-height: 1.15;
   font-size: 4rem;
-}
-
-.title,
-.description {
-  text-align: center;
 }
 
 .description {
@@ -113,4 +106,77 @@
     width: 100%;
     flex-direction: column;
   }
+}
+.title {
+  margin-top: 4rem;
+  margin-bottom: 0.5rem;
+}
+
+.catchphrase {
+  @include text-style-body1-bold;
+}
+
+.titleText {
+  @include text-style-h3-bold;
+  margin-top: 1.25rem;
+}
+
+.subscribeButton {
+  gap: 0.25rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-self: flex-end;
+  justify-content: center;
+  margin-right: 0.75rem;
+  border: 1px var(--color-black) solid;
+  border-radius: 50%;
+  background-color: var(--color-accent-yellow-500);
+  cursor: pointer;
+  width: 8rem;
+  height: 8rem;
+  transition: 0.2s;
+
+  @include text-style-body2-bold;
+}
+
+.subscribeButton:hover {
+  background-color: var(--color-black);
+  color: var(--color-accent-yellow-500);
+}
+
+.coverImageWrapper {
+  position: relative;
+  top: -4rem;
+  z-index: -1;
+  margin-bottom: 3.5rem;
+  width: 100vw;
+  margin-left: -$container-padding;
+}
+
+.categoryList {
+  gap: $category-list-gap;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin-bottom: 4rem;
+  list-style-type: none;
+}
+
+.categoryListItem {
+  @include text-style-body1-medium;
+
+  text-align: center;
+  background-color: var(--color-gray-100);
+  color: var(--color-black);
+}
+
+.categoryListItem.selected {
+  background-color: var(--color-gray-900);
+  color: var(--color-white);
+}
+
+.categoryListItem a {
+  display: block;
+  padding: 0.625rem;
+  color: inherit;
 }

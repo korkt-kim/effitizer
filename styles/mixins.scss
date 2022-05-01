@@ -1,0 +1,24 @@
+@mixin text-style-body1-bold {
+  font-size: var(--text-body1-font-size);
+  line-height: var(--text-body1-line-height);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary);
+}
+
+@mixin text-style-h3-bold {
+  font-size: var(--text-h3-font-size);
+  line-height: var(--text-h3-line-height);
+  font-weight: var(--font-weight-extrabold);
+}
+
+@mixin text-style-body2-bold {
+  font-size: var(--text-body2-font-size);
+  line-height: var(--text-body2-line-height);
+  font-weight: var(--font-weight-bold);
+}
+
+@mixin text-style-body1-medium {
+  font-size: var(--text-body1-font-size);
+  line-height: var(--text-body1-line-height);
+  font-weight: var(--font-weight-medium);
+}
