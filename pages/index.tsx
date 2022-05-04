@@ -29,8 +29,6 @@ const Home: NextPage<Props> = ({ categories }) => {
     ? Number(query.category)
     : null;
 
-  console.log(selectedCategory);
-
   return (
     <div>
       <Head>
