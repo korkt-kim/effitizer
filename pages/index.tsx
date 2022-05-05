@@ -7,23 +7,56 @@ import Image from '../components/Image';
 import ArrowIcon from '../components/ArrowIcon';
 import classNames from 'classnames';
 
-type CategoryList = { id: number; name: string }[];
+type Category = { id: number; name: string };
+type CategoryList = Category[];
 
-type Props = { categories: CategoryList };
+type Book = {
+  id: number;
+  author: string;
+  publisher: string;
+  title: string;
+};
+
+type ContentItem = {
+  id: number;
+  title: string;
+  book: Book;
+};
+
+type Content = {
+  id: number;
+  category: Category['id'];
+  title: string;
+  items: ContentItem[];
+};
+
+type Props = {
+  categories: CategoryList;
+  initialContents: Content[];
+};
 
 export const getServerSideProps: GetServerSideProps<Props> = async (
   context
 ) => {
+  const { category } = context.query;
   const categories = await (
     await fetch(process.env.API_HOST + '/category')
   ).json();
 
+  const initialContents = await (
+    await fetch(
+      process.env.API_HOST +
+        '/content' +
+        (Number.isInteger(category) ? `?category=${category}` : '')
+    )
+  ).json();
+
   return {
-    props: { categories },
+    props: { categories, initialContents },
   };
 };
 
-const Home: NextPage<Props> = ({ categories }) => {
+const Home: NextPage<Props> = ({ categories, initialContents }) => {
   const { query, pathname } = useRouter();
   const selectedCategory = Number.isInteger(Number(query.category))
     ? Number(query.category)
@@ -100,40 +133,47 @@ const Home: NextPage<Props> = ({ categories }) => {
           ))}
         </ul>
 
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.tsx</code>
-        </p>
-
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h2>Documentation &rarr;</h2>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h2>Learn &rarr;</h2>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/canary/examples"
-            className={styles.card}
-          >
-            <h2>Examples &rarr;</h2>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h2>Deploy &rarr;</h2>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-        </div>
+        <ul className={styles.contentList}>
+          {initialContents.map(({ id, title, items }) => (
+            <li key={id} className={styles.contentListItem}>
+              <h2 className={styles.contentListTitle}>{title}</h2>
+              <ul className={styles.contentListItems}>
+                {items.map(({ id, title, book }) => (
+                  <li key={id} className={styles.contentListItem}>
+                    <h3 className={styles.contentListItemTitle}>{title}</h3>
+                    <div className={styles.contentListItemBody}>
+                      <div className={styles.contentListItemBodyLeft}>
+                        <div className={styles.contentListItemBodyLeftTop}>
+                          <div
+                            className={styles.contentListItemBodyLeftTopAuthor}
+                          >
+                            {book.author}
+                          </div>
+                          <div
+                            className={
+                              styles.contentListItemBodyLeftTopPublisher
+                            }
+                          >
+                            {book.publisher}
+                          </div>
+                        </div>
+                        <div className={styles.contentListItemBodyLeftBottom}>
+                          <div
+                            className={
+                              styles.contentListItemBodyLeftBottomTitle
+                            }
+                          >
+                            {book.title}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </li>
+          ))}
+        </ul>
       </main>
 
       <footer className={styles.footer}>
