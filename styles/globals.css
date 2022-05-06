@@ -21,7 +21,7 @@
   --color-primary-500: #1b9248;
   --color-primary-600: #207c43;
   --color-primary-700: #0e642d;
-  --color-primary-100: #11ad4e;
+  --color-primary-800: #11ad4e;
   --color-primary: var(--color-primary-500);
 
   --color-accent-blue-100: #f3f6ff;
@@ -44,6 +44,7 @@
   --font-weight-bold: 700;
   --font-weight-semibold: 600;
   --font-weight-medium: 500;
+  --font-weight-regular: 400;
 
   --text-display-font-size: 56px;
   --text-display-line-height: 1.2143;

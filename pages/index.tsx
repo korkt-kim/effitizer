@@ -5,6 +5,7 @@ import Link from 'next/link';
 import styles from '../styles/Home.module.scss';
 import Image from '../components/Image';
 import ArrowIcon from '../components/ArrowIcon';
+import PlusIcon from '../components/PlusIcon';
 import classNames from 'classnames';
 
 type Category = { id: number; name: string };
@@ -32,7 +33,7 @@ type Content = {
 
 type Props = {
   categories: CategoryList;
-  initialContents: Content[];
+  initialContentsResponse: { contents: Content[]; next: string };
 };
 
 export const getServerSideProps: GetServerSideProps<Props> = async (
@@ -43,7 +44,7 @@ export const getServerSideProps: GetServerSideProps<Props> = async (
     await fetch(process.env.API_HOST + '/category')
   ).json();
 
-  const initialContents = await (
+  const initialContentsResponse = await (
     await fetch(
       process.env.API_HOST +
         '/content' +
@@ -52,15 +53,16 @@ export const getServerSideProps: GetServerSideProps<Props> = async (
   ).json();
 
   return {
-    props: { categories, initialContents },
+    props: { categories, initialContentsResponse },
   };
 };
 
-const Home: NextPage<Props> = ({ categories, initialContents }) => {
+const Home: NextPage<Props> = ({ categories, initialContentsResponse }) => {
   const { query, pathname } = useRouter();
   const selectedCategory = Number.isInteger(Number(query.category))
     ? Number(query.category)
     : null;
+  const { contents: initialContents, next } = initialContentsResponse;
 
   return (
     <div>
@@ -133,41 +135,20 @@ const Home: NextPage<Props> = ({ categories, initialContents }) => {
           ))}
         </ul>
 
-        <ul className={styles.contentList}>
+        <ul className={styles.contentGroupList}>
           {initialContents.map(({ id, title, items }) => (
-            <li key={id} className={styles.contentListItem}>
+            <li key={id} className={styles.contentGroupItem}>
               <h2 className={styles.contentListTitle}>{title}</h2>
               <ul className={styles.contentListItems}>
                 {items.map(({ id, title, book }) => (
                   <li key={id} className={styles.contentListItem}>
-                    <h3 className={styles.contentListItemTitle}>{title}</h3>
-                    <div className={styles.contentListItemBody}>
-                      <div className={styles.contentListItemBodyLeft}>
-                        <div className={styles.contentListItemBodyLeftTop}>
-                          <div
-                            className={styles.contentListItemBodyLeftTopAuthor}
-                          >
-                            {book.author}
-                          </div>
-                          <div
-                            className={
-                              styles.contentListItemBodyLeftTopPublisher
-                            }
-                          >
-                            {book.publisher}
-                          </div>
-                        </div>
-                        <div className={styles.contentListItemBodyLeftBottom}>
-                          <div
-                            className={
-                              styles.contentListItemBodyLeftBottomTitle
-                            }
-                          >
-                            {book.title}
-                          </div>
-                        </div>
+                    <div className={styles.contentListItemText}>
+                      <h3 className={styles.contentListItemTitle}>{title}</h3>
+                      <div className={styles.contentListItemBody}>
+                        {book.title} / {book.author} / {book.publisher}
                       </div>
                     </div>
+                    <PlusIcon className={styles.plusIcon} />
                   </li>
                 ))}
               </ul>

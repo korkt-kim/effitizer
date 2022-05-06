@@ -17,6 +17,12 @@
   font-weight: var(--font-weight-extrabold);
 }
 
+@mixin text-style-subtitle1-bold {
+  font-size: var(--text-subtitle1-font-size);
+  line-height: var(--text-subtitle1-line-height);
+  font-weight: var(--font-weight-extrabold);
+}
+
 @mixin text-style-body2-bold {
   font-size: var(--text-body2-font-size);
   line-height: var(--text-body2-line-height);
@@ -27,4 +33,10 @@
   font-size: var(--text-body1-font-size);
   line-height: var(--text-body1-line-height);
   font-weight: var(--font-weight-medium);
+}
+
+@mixin text-style-body2-regular {
+  font-size: var(--text-body2-font-size);
+  line-height: var(--text-body2-line-height);
+  font-weight: var(--font-weight-regular);
 }
