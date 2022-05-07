@@ -1,4 +1,4 @@
-import { FC, ReactNode, useState } from 'react';
+import { FC, ReactNode, useEffect, useState } from 'react';
 import styles from './index.module.scss';
 import Image from '../Image';
 import InstagramIcon from '../InstagramIcon';
@@ -12,6 +12,16 @@ const emailAddress = 'interaction0318@naver.com';
 
 const Layout: FC<{ children?: ReactNode }> = ({ children }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.classList.add('overflow-hidden');
+
+      return () => {
+        document.body.classList.remove('overflow-hidden');
+      };
+    }
+  }, [isMenuOpen]);
 
   return (
     <div>
