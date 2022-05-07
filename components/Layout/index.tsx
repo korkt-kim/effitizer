@@ -39,8 +39,12 @@ const Layout: FC<{ children?: ReactNode }> = ({ children }) => {
               </button>
               <div className={styles.menuBody}>
                 <ul className={styles.menuList}>
-                  <li className={styles.menuListItem}>전체 콘텐츠</li>
-                  <li className={styles.menuListItem}>멤버십 가입</li>
+                  <li className={styles.menuListItem}>
+                    <Link href="/">전체 콘텐츠</Link>
+                  </li>
+                  <li className={styles.menuListItem}>
+                    <Link href="/subscribe">멤버십 가입</Link>
+                  </li>
                 </ul>
                 <Link href="/login" passHref={true}>
                   <a className={styles.loginButton}>로그인</a>

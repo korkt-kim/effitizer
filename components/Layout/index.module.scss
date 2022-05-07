@@ -100,12 +100,13 @@ $container-padding: 1.25rem;
   list-style-type: none;
 }
 
-.menuListItem {
-  padding: 1.5rem 0;
-}
-
 .menuListItem:not(:last-child) {
   border-bottom: 1px solid var(--color-gray-800);
+}
+
+.menuListItem a {
+  display: block;
+  padding: 1.5rem 0;
 }
 
 .loginButton {
