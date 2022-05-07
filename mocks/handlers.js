@@ -23,7 +23,7 @@ export const handlers = [
     return res(
       ctx.status(200),
       ctx.json({
-        next: '',
+        next: 'abc',
         contents: [
           {
             id: 0,

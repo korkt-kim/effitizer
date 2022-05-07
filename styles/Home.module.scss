@@ -247,3 +247,13 @@ $category-list-gap: 0.75rem;
   margin-top: 0.25rem;
   color: var(--color-gray-700);
 }
+
+.loadMoreButton {
+  @include text-style-body1-regular;
+  align-self: center;
+  margin-top: 4rem;
+  border: 1px solid var(--color-gray-1000);
+  background-color: transparent;
+  padding: 1rem 5rem;
+  cursor: pointer;
+}

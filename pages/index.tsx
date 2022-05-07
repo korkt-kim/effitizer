@@ -7,6 +7,7 @@ import Image from '../components/Image';
 import ArrowIcon from '../components/ArrowIcon';
 import PlusIcon from '../components/PlusIcon';
 import classNames from 'classnames';
+import { useInfiniteQuery } from 'react-query';
 
 type Category = { id: number; name: string };
 type CategoryList = Category[];
@@ -31,10 +32,33 @@ type Content = {
   items: ContentItem[];
 };
 
+type ContentsResponse = {
+  contents: Content[];
+  next: string;
+};
+
 type Props = {
   categories: CategoryList;
-  initialContentsResponse: { contents: Content[]; next: string };
+  initialContentsResponse: ContentsResponse;
 };
+
+async function fetchContents({
+  category,
+  next = '',
+}: {
+  category: unknown;
+  next?: string;
+}) {
+  const searchParams = new URLSearchParams({
+    category: category ? String(category) : '',
+    next,
+  });
+
+  const response = await fetch(
+    process.env.API_HOST + '/content?' + searchParams.toString()
+  );
+  return response.json();
+}
 
 export const getServerSideProps: GetServerSideProps<Props> = async (
   context
@@ -44,13 +68,7 @@ export const getServerSideProps: GetServerSideProps<Props> = async (
     await fetch(process.env.API_HOST + '/category')
   ).json();
 
-  const initialContentsResponse = await (
-    await fetch(
-      process.env.API_HOST +
-        '/content' +
-        (Number.isInteger(category) ? `?category=${category}` : '')
-    )
-  ).json();
+  const initialContentsResponse = await fetchContents({ category });
 
   return {
     props: { categories, initialContentsResponse },
@@ -62,7 +80,20 @@ const Home: NextPage<Props> = ({ categories, initialContentsResponse }) => {
   const selectedCategory = Number.isInteger(Number(query.category))
     ? Number(query.category)
     : null;
-  const { contents: initialContents, next } = initialContentsResponse;
+
+  const { fetchNextPage, data, hasNextPage, isFetchingNextPage } =
+    useInfiniteQuery<ContentsResponse>(
+      ['contents', { category: selectedCategory }],
+      ({ pageParam: next = '' }) =>
+        fetchContents({ category: selectedCategory, next }),
+      {
+        getNextPageParam: (lastPage) => lastPage.next,
+        initialData: { pages: [initialContentsResponse], pageParams: [''] },
+      }
+    );
+  const contents = data
+    ? data.pages.flatMap((response) => response.contents)
+    : [];
 
   return (
     <div>
@@ -136,7 +167,7 @@ const Home: NextPage<Props> = ({ categories, initialContentsResponse }) => {
         </ul>
 
         <ul className={styles.contentGroupList}>
-          {initialContents.map(({ id, title, items }) => (
+          {contents.map(({ id, title, items }) => (
             <li key={id} className={styles.contentGroupItem}>
               <h2 className={styles.contentListTitle}>{title}</h2>
               <ul className={styles.contentListItems}>
@@ -155,6 +186,16 @@ const Home: NextPage<Props> = ({ categories, initialContentsResponse }) => {
             </li>
           ))}
         </ul>
+        {hasNextPage && (
+          <button
+            className={styles.loadMoreButton}
+            type="button"
+            onClick={() => fetchNextPage()}
+            disabled={isFetchingNextPage}
+          >
+            더보기
+          </button>
+        )}
       </main>
 
       <footer className={styles.footer}>
