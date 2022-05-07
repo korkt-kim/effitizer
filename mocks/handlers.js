@@ -68,9 +68,11 @@ export const handlers = [
             ],
           },
           {
+            id: 1,
             title: '블록체인,\n그 끝은 어디까지인가?',
             items: [
               {
+                id: 5,
                 title: '메타버스와 NFT의 연결',
                 book: {
                   title: '메타버스, 이미 시작된 미래',
@@ -79,6 +81,7 @@ export const handlers = [
                 },
               },
               {
+                id: 6,
                 title: 'NFT, 분할 가능한 저작권의 등장',
                 book: {
                   title: '블록체인 트렌드, 2022-2023',
@@ -87,6 +90,7 @@ export const handlers = [
                 },
               },
               {
+                id: 7,
                 title: '블록체인 투표',
                 book: {
                   title: '블록체인 혁명',
@@ -95,6 +99,7 @@ export const handlers = [
                 },
               },
               {
+                id: 8,
                 title: '블록체인, 디지털에 가치를 더하다',
                 book: {
                   title: '블록체인, 디지털에 가치를 더하다',
@@ -105,9 +110,11 @@ export const handlers = [
             ],
           },
           {
+            id: 2,
             title: '인문학으로 보는 세상',
             items: [
               {
+                id: 9,
                 title: '철학은 어떻게 투자의 무기가 되는가',
                 book: {
                   title: '부의 인문학',
@@ -116,6 +123,7 @@ export const handlers = [
                 },
               },
               {
+                id: 10,
                 title: '포스트 코로나 시대의 변화',
                 book: {
                   title: 'AI는 인문학을 먹고 산다',
@@ -124,6 +132,7 @@ export const handlers = [
                 },
               },
               {
+                id: 111,
                 title: '5000년 역사를 만든 동서양 천재들의 사색공부법',
                 book: {
                   title: '생각하는 인문학',
@@ -132,6 +141,7 @@ export const handlers = [
                 },
               },
               {
+                id: 112,
                 title: '‘나는 누구인가’라는 질문에 정확한 답이 가능할까?',
                 book: {
                   title: '하루 10분 인문학',
@@ -142,9 +152,11 @@ export const handlers = [
             ],
           },
           {
+            id: 3,
             title: '융복합 예술의\n오늘과 내일',
             items: [
               {
+                id: 113,
                 title: '창의력은 왜 필요한가?',
                 book: {
                   title: '문화예술교육은 왜 중요한가',
@@ -153,6 +165,7 @@ export const handlers = [
                 },
               },
               {
+                id: 114,
                 title: '메타픽션 소설 쓰기의 치유적 기능',
                 book: {
                   title: '인문예술, 세계를 담다',
@@ -161,6 +174,7 @@ export const handlers = [
                 },
               },
               {
+                id: 115,
                 title: '쓸모 있는 ‘예술의 순간’은 어디든 존재한다',
                 book: {
                   title: '널 위한 문화예술',
@@ -169,6 +183,7 @@ export const handlers = [
                 },
               },
               {
+                id: 116,
                 title: '치고 달리며, 쓰고 지우며_경험으로서의 예술',
                 book: {
                   title: '예술에 대한 여덜 가지 답변의 역사',
