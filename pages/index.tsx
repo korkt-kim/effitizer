@@ -9,6 +9,7 @@ import PlusIcon from '../components/PlusIcon';
 import classNames from 'classnames';
 import { useInfiniteQuery } from 'react-query';
 import InstagramIcon from '../components/InstagramIcon';
+import Layout from '../components/Layout';
 
 type Category = { id: number; name: string };
 type CategoryList = Category[];
@@ -99,7 +100,7 @@ const Home: NextPage<Props> = ({ categories, initialContentsResponse }) => {
     : [];
 
   return (
-    <div>
+    <Layout>
       <Head>
         <title>EffiTizer</title>
         <meta
@@ -108,7 +109,6 @@ const Home: NextPage<Props> = ({ categories, initialContentsResponse }) => {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
       <main className={styles.main}>
         <h1 className={styles.title}>
           <div className={styles.catchphrase}>
@@ -200,43 +200,7 @@ const Home: NextPage<Props> = ({ categories, initialContentsResponse }) => {
           </button>
         )}
       </main>
-
-      <footer className={styles.footer}>
-        <div className={styles.aboutEffitizer}>
-          <Image src="/logo.png" alt="로고" width={76} height={89} />
-          <p>
-            식전에 가볍게 먹는 에피타이저처럼 ‘쉽고 빠른 독서를 위한 숏폼 전자책
-            서비스’를 제공하고 있습니다.
-          </p>
-        </div>
-        <ul className={styles.footerLinks}>
-          <li>
-            <a>서비스 소개</a>
-          </li>
-          <li>
-            <a>개인정보처리방침</a>
-          </li>
-          <li>
-            <a>고객센터</a>
-          </li>
-          <li>
-            <a>이용약관</a>
-          </li>
-        </ul>
-        <div className={styles.companyInfo}>
-          <div>대표: 노상호 | 사업자등록번호 : 000-00-00000</div>
-          <div>
-            이메일 : <a href={'mailto:' + emailAddress}>{emailAddress}</a>
-          </div>
-        </div>
-        <a href="https://instagr.am/effitizer" target="_blank" rel="noreferrer">
-          <InstagramIcon aria-label="Instagram" />
-        </a>
-        <small className={styles.copyright}>
-          Copyright © 2021 WASD Pte. Ltd. All rights reserved
-        </small>
-      </footer>
-    </div>
+    </Layout>
   );
 };
 

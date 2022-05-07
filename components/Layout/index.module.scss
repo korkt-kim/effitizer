@@ -1,0 +1,51 @@
+@import '../../styles/mixins';
+
+$container-padding: 1.25rem;
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  margin-top: 8rem;
+  background-color: var(--color-accent-orange-500);
+  padding: 0 $container-padding;
+  color: white;
+}
+
+.aboutEffitizer {
+  @include text-style-body1-medium;
+  display: flex;
+  flex-direction: row;
+  margin-top: 2.625rem;
+  margin-bottom: 4.25rem;
+  gap: 1.5rem;
+
+  img {
+    flex: none;
+  }
+}
+
+.footerLinks {
+  @include text-style-body2-bold;
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 1.5rem;
+  list-style-type: none;
+  gap: 1.5rem;
+}
+
+.companyInfo {
+  @include text-style-body2-medium;
+  color: var(--color-accent-orange-200);
+  margin-bottom: 1.5rem;
+
+  a {
+    color: inherit;
+  }
+}
+
+.copyright {
+  @include text-style-body3-regular;
+  margin-top: 4rem;
+  margin-bottom: 2rem;
+  color: var(--color-accent-orange-200);
+}
