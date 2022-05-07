@@ -116,6 +116,7 @@ $category-list-gap: 0.75rem;
   border: 1px var(--color-black) solid;
   border-radius: 50%;
   background-color: var(--color-accent-yellow-500);
+  color: var(--color-gray-1000);
   cursor: pointer;
   width: 8rem;
   height: 8rem;
@@ -238,6 +239,7 @@ $category-list-gap: 0.75rem;
   margin-top: 4rem;
   border: 1px solid var(--color-gray-1000);
   background-color: transparent;
+  color: var(--color-gray-1000);
   padding: 1rem 5rem;
   cursor: pointer;
 }
