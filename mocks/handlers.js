@@ -186,7 +186,7 @@ export const handlers = [
                 id: 116,
                 title: '치고 달리며, 쓰고 지우며_경험으로서의 예술',
                 book: {
-                  title: '예술에 대한 여덜 가지 답변의 역사',
+                  title: '예술에 대한 여덟 가지 답변의 역사',
                   author: '김진엽',
                   publisher: '우리학교',
                 },
