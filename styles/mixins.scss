@@ -46,3 +46,15 @@
   line-height: var(--text-body2-line-height);
   font-weight: var(--font-weight-regular);
 }
+
+@mixin text-style-body2-medium {
+  font-size: var(--text-body2-font-size);
+  line-height: var(--text-body2-line-height);
+  font-weight: var(--font-weight-medium);
+}
+
+@mixin text-style-body3-regular {
+  font-size: var(--text-body3-font-size);
+  line-height: var(--text-body3-line-height);
+  font-weight: var(--font-weight-regular);
+}
