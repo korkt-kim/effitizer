@@ -1,20 +1,54 @@
-import { FC, ReactNode } from 'react';
+import { FC, ReactNode, useState } from 'react';
 import styles from './index.module.scss';
 import Image from '../Image';
 import InstagramIcon from '../InstagramIcon';
 import LogoType from '../LogoType';
 import MenuIcon from '../MenuIcon';
+import CloseIcon from '../CloseIcon';
+import classNames from 'classnames';
+import Link from 'next/link';
 
 const emailAddress = 'interaction0318@naver.com';
 
 const Layout: FC<{ children?: ReactNode }> = ({ children }) => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   return (
     <div>
       <header className={styles.header}>
         <LogoType fill="currentColor" />
-        <button type="button" className={styles.menuButton}>
-          <MenuIcon fill="currentColor" aria-label="메뉴 열기" />
+        <button type="button" className={styles.iconButton}>
+          <MenuIcon
+            fill="currentColor"
+            aria-label="메뉴 열기"
+            onClick={() => setIsMenuOpen(true)}
+          />
         </button>
+        {isMenuOpen && (
+          <div className={styles.menuWrapper}>
+            <nav className={styles.menu}>
+              <button
+                type="button"
+                className={classNames(
+                  styles.iconButton,
+                  styles.closeMenuButton
+                )}
+                onClick={() => setIsMenuOpen(false)}
+              >
+                <CloseIcon />
+              </button>
+              <div className={styles.menuBody}>
+                <ul className={styles.menuList}>
+                  <li className={styles.menuListItem}>전체 콘텐츠</li>
+                  <li className={styles.menuListItem}>멤버십 가입</li>
+                </ul>
+                <Link href="/login" passHref={true}>
+                  <a className={styles.loginButton}>로그인</a>
+                </Link>
+              </div>
+            </nav>
+          </div>
+        )}
       </header>
       {children}
       <footer className={styles.footer}>

@@ -11,7 +11,7 @@ $container-padding: 1.25rem;
   color: var(--color-white);
 }
 
-.menuButton {
+.iconButton {
   border: 0;
   background-color: transparent;
   cursor: pointer;
@@ -64,4 +64,56 @@ $container-padding: 1.25rem;
   margin-top: 4rem;
   margin-bottom: 2rem;
   color: var(--color-accent-orange-200);
+}
+
+.menuWrapper {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgb(0, 0, 0, 0.5);
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--color-gray-1000);
+  padding: 1.25rem;
+  width: calc(100vw - 3.5rem);
+}
+
+.closeMenuButton {
+  align-self: flex-end;
+}
+
+.menuBody {
+  margin-top: 1.625rem;
+  padding: 0 0.75rem;
+}
+
+.menuList {
+  list-style-type: none;
+}
+
+.menuListItem {
+  padding: 1.5rem 0;
+}
+
+.menuListItem:not(:last-child) {
+  border-bottom: 1px solid var(--color-gray-800);
+}
+
+.loginButton {
+  @include text-style-subtitle1-semibold;
+  display: block;
+  margin-top: 2rem;
+  background-color: var(--color-primary);
+  color: var(--color-black);
+  padding: 0.625rem;
+  text-align: center;
 }
