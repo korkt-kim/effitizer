@@ -2,6 +2,22 @@
 
 $container-padding: 1.25rem;
 
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: var(--color-black);
+  padding: 1.25rem;
+  color: var(--color-white);
+}
+
+.menuButton {
+  border: 0;
+  background-color: transparent;
+  cursor: pointer;
+  color: var(--color-white);
+}
+
 .footer {
   display: flex;
   flex-direction: column;

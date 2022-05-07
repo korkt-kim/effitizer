@@ -2,12 +2,20 @@ import { FC, ReactNode } from 'react';
 import styles from './index.module.scss';
 import Image from '../Image';
 import InstagramIcon from '../InstagramIcon';
+import LogoType from '../LogoType';
+import MenuIcon from '../MenuIcon';
 
 const emailAddress = 'interaction0318@naver.com';
 
 const Layout: FC<{ children?: ReactNode }> = ({ children }) => {
   return (
     <div>
+      <header className={styles.header}>
+        <LogoType fill="currentColor" />
+        <button type="button" className={styles.menuButton}>
+          <MenuIcon fill="currentColor" aria-label="메뉴 열기" />
+        </button>
+      </header>
       {children}
       <footer className={styles.footer}>
         <div className={styles.aboutEffitizer}>

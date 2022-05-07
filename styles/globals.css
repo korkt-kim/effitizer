@@ -140,6 +140,13 @@ select {
   font: inherit;
 }
 
+button,
+[type='button'],
+[type='reset'],
+[type='submit'] {
+  -webkit-appearance: button;
+}
+
 p,
 h1,
 h2,
