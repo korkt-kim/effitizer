@@ -22,7 +22,7 @@
   --color-primary-600: #207c43;
   --color-primary-700: #0e642d;
   --color-primary-800: #11ad4e;
-  --color-primary: var(--color-primary-500);
+  --color-primary: var(--color-primary-800);
 
   --color-accent-blue-100: #f3f6ff;
   --color-accent-blue-200: #d4ddf5;
