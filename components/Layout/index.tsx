@@ -25,7 +25,14 @@ const Layout: FC<{ children?: ReactNode }> = ({ children }) => {
           />
         </button>
         {isMenuOpen && (
-          <div className={styles.menuWrapper}>
+          <div
+            className={styles.menuWrapper}
+            onMouseUp={(event) => {
+              if (event.target === event.currentTarget) {
+                setIsMenuOpen(false);
+              }
+            }}
+          >
             <nav className={styles.menu}>
               <button
                 type="button"
