@@ -98,6 +98,7 @@ $category-list-gap: 0.75rem;
 
 .catchphrase {
   @include text-style-body1-bold;
+  color: var(--color-primary);
 }
 
 .titleText {
