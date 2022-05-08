@@ -1,0 +1,9 @@
+@import 'mixins';
+
+.main {
+  padding: 4rem 1.25rem;
+}
+
+.title {
+  @include text-style-h3-bold;
+}
