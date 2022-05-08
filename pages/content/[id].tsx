@@ -1,3 +1,4 @@
+import Head from 'next/head';
 import { GetServerSideProps, NextPage } from 'next/types';
 import Image from '../../components/Image';
 import Layout from '../../components/Layout';
@@ -31,6 +32,11 @@ export const getServerSideProps: GetServerSideProps<Props> = async (
 const Content: NextPage<Props> = ({ content, related }) => {
   return (
     <Layout>
+      <Head>
+        <title>{content.title} - EffiTizer</title>
+        <meta name="description" content={content.content.substring(0, 160)} />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
       <main>
         <article>
           <h1>
