@@ -26,7 +26,11 @@ const Layout: FC<{ children?: ReactNode }> = ({ children }) => {
   return (
     <div>
       <header className={styles.header}>
-        <LogoType fill="currentColor" />
+        <Link href="/" passHref>
+          <a>
+            <LogoType fill="currentColor" aria-label="EffiTizer" />
+          </a>
+        </Link>
         <button type="button" className={styles.iconButton}>
           <MenuIcon
             fill="currentColor"
