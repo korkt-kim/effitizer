@@ -118,7 +118,7 @@ const Home: NextPage<Props> = ({ categories, initialContentsResponse }) => {
               selectedCategory == null && styles.selected
             )}
           >
-            <Link href={{ pathname }} replace={true}>
+            <Link href={{ pathname }} replace={true} scroll={false}>
               전체
             </Link>
           </li>
@@ -133,6 +133,7 @@ const Home: NextPage<Props> = ({ categories, initialContentsResponse }) => {
               <Link
                 href={{ pathname, query: { ...query, category: id } }}
                 replace={true}
+                scroll={false}
               >
                 {name}
               </Link>
