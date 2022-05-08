@@ -1,0 +1,55 @@
+@import 'mixins';
+
+$title-padding: 1.25rem;
+
+.bookCoverBackground {
+  margin-bottom: 2.5rem;
+  padding: 3.125rem 0;
+  background-color: var(--color-accent-yellow-500);
+}
+
+.bookCoverParent {
+  position: relative;
+  height: 14.5rem;
+}
+
+.bookCoverParent img {
+  object-fit: contain;
+}
+
+.title {
+  @include text-style-h4-bold;
+  margin-bottom: 2rem;
+  padding: 0 $title-padding;
+}
+
+.bookInfo {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding: 0 $title-padding;
+  gap: 0.625rem 1rem;
+  padding-bottom: 2.5rem;
+  border-bottom: 1px solid var(--color-gray-1000);
+}
+
+.bookInfoItem {
+  display: flex;
+  align-items: baseline;
+}
+
+.bookInfoItemLabel {
+  @include text-style-body1-bold;
+  margin-right: 0.5rem;
+  color: var(--color-accent-orange-500);
+}
+
+.bookInfoItemBody {
+  @include text-style-body1-medium;
+}
+
+.contentBody {
+  @include text-style-subtitle1-regular;
+  line-height: 1.8;
+  padding: 3rem 2.5rem 8rem;
+}

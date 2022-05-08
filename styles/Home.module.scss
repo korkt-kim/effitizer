@@ -199,11 +199,7 @@ $category-list-gap: 0.75rem;
 }
 
 .contentListItem {
-  display: flex;
   position: relative;
-  align-items: center;
-  padding: 1.5rem 1.25rem;
-  gap: 1.25rem;
 }
 
 .contentListItem:not(:last-child)::after {
@@ -215,6 +211,14 @@ $category-list-gap: 0.75rem;
   width: calc(100vw - 1.25rem);
   height: 1px;
   content: '';
+}
+
+.contentListItem > a {
+  display: flex;
+  position: relative;
+  align-items: center;
+  padding: 1.5rem 1.25rem;
+  gap: 1.25rem;
 }
 
 .contentListItemText {

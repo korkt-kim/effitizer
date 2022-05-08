@@ -8,36 +8,7 @@ import ArrowIcon from '../components/ArrowIcon';
 import PlusIcon from '../components/PlusIcon';
 import classNames from 'classnames';
 import { useInfiniteQuery } from 'react-query';
-import InstagramIcon from '../components/InstagramIcon';
 import Layout from '../components/Layout';
-
-type Category = { id: number; name: string };
-type CategoryList = Category[];
-
-type Book = {
-  id: number;
-  author: string;
-  publisher: string;
-  title: string;
-};
-
-type ContentItem = {
-  id: number;
-  title: string;
-  book: Book;
-};
-
-type Content = {
-  id: number;
-  category: Category['id'];
-  title: string;
-  items: ContentItem[];
-};
-
-type ContentsResponse = {
-  contents: Content[];
-  next: string;
-};
 
 type Props = {
   categories: CategoryList;
@@ -176,13 +147,19 @@ const Home: NextPage<Props> = ({ categories, initialContentsResponse }) => {
               <ul className={styles.contentListItems}>
                 {items.map(({ id, title, book }) => (
                   <li key={id} className={styles.contentListItem}>
-                    <div className={styles.contentListItemText}>
-                      <h3 className={styles.contentListItemTitle}>{title}</h3>
-                      <div className={styles.contentListItemBody}>
-                        {book.title} / {book.author} / {book.publisher}
-                      </div>
-                    </div>
-                    <PlusIcon className={styles.plusIcon} />
+                    <Link href={`/content/${id}`} passHref>
+                      <a>
+                        <div className={styles.contentListItemText}>
+                          <h3 className={styles.contentListItemTitle}>
+                            {title}
+                          </h3>
+                          <div className={styles.contentListItemBody}>
+                            {book.title} / {book.author} / {book.publisher}
+                          </div>
+                        </div>
+                        <PlusIcon className={styles.plusIcon} />
+                      </a>
+                    </Link>
                   </li>
                 ))}
               </ul>
