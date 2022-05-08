@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import { GetServerSideProps, NextPage } from 'next/types';
+import ContentBody from '../../components/ContentBody';
 import Image from '../../components/Image';
 import Layout from '../../components/Layout';
 import styles from '../../styles/Content.module.scss';
@@ -67,7 +68,9 @@ const Content: NextPage<Props> = ({ content, related }) => {
               </dd>
             </div>
           </dl>
-          <div className={styles.contentBody}>{content.content}</div>
+          <ContentBody className={styles.contentBody}>
+            {content.content}
+          </ContentBody>
         </article>
       </main>
     </Layout>
