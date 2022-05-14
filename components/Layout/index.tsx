@@ -7,6 +7,7 @@ import MenuIcon from '../MenuIcon';
 import CloseIcon from '../CloseIcon';
 import classNames from 'classnames';
 import Link from 'next/link';
+import { AnimatePresence, motion } from 'framer-motion';
 
 const emailAddress = 'interaction0318@naver.com';
 
@@ -38,42 +39,58 @@ const Layout: FC<{ children?: ReactNode }> = ({ children }) => {
             onClick={() => setIsMenuOpen(true)}
           />
         </button>
-        {isMenuOpen && (
-          <div
-            className={styles.menuWrapper}
-            onMouseUp={(event) => {
-              if (event.target === event.currentTarget) {
-                setIsMenuOpen(false);
-              }
-            }}
-          >
-            <nav className={styles.menu}>
-              <button
-                type="button"
-                className={classNames(
-                  styles.iconButton,
-                  styles.closeMenuButton
-                )}
-                onClick={() => setIsMenuOpen(false)}
+        <AnimatePresence>
+          {isMenuOpen && (
+            <>
+              <motion.div
+                key="menuBackdrop"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                className={styles.menuWrapper}
+                onMouseUp={(event) => {
+                  if (event.target === event.currentTarget) {
+                    setIsMenuOpen(false);
+                  }
+                }}
+              ></motion.div>
+              <motion.nav
+                key="menu"
+                className={styles.menu}
+                // initial={{ translateX: '100%' }}
+                // animate={{ translateX: 0 }}
+                // exit={{ translateX: '100%' }}
+                initial={{ scaleX: 0, transformOrigin: 'right' }}
+                animate={{ scaleX: 1 }}
+                exit={{ scaleX: 0 }}
               >
-                <CloseIcon />
-              </button>
-              <div className={styles.menuBody}>
-                <ul className={styles.menuList}>
-                  <li className={styles.menuListItem}>
-                    <Link href="/">전체 콘텐츠</Link>
-                  </li>
-                  <li className={styles.menuListItem}>
-                    <Link href="/subscribe">멤버십 가입</Link>
-                  </li>
-                </ul>
-                <Link href="/login" passHref={true}>
-                  <a className={styles.loginButton}>로그인</a>
-                </Link>
-              </div>
-            </nav>
-          </div>
-        )}
+                <button
+                  type="button"
+                  className={classNames(
+                    styles.iconButton,
+                    styles.closeMenuButton
+                  )}
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  <CloseIcon />
+                </button>
+                <div className={styles.menuBody}>
+                  <ul className={styles.menuList}>
+                    <li className={styles.menuListItem}>
+                      <Link href="/">전체 콘텐츠</Link>
+                    </li>
+                    <li className={styles.menuListItem}>
+                      <Link href="/subscribe">멤버십 가입</Link>
+                    </li>
+                  </ul>
+                  <Link href="/login" passHref={true}>
+                    <a className={styles.loginButton}>로그인</a>
+                  </Link>
+                </div>
+              </motion.nav>
+            </>
+          )}
+        </AnimatePresence>
       </header>
       {children}
       <footer className={styles.footer}>
