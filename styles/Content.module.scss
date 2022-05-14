@@ -162,12 +162,6 @@ $title-padding: 1.25rem;
   position: relative;
 }
 
-.recommendedListItemLink {
-  display: flex;
-  gap: $title-padding;
-  padding: $title-padding;
-}
-
 .recommendedListItem:not(:last-child)::after {
   display: block;
   position: absolute;
@@ -179,8 +173,15 @@ $title-padding: 1.25rem;
   content: '';
 }
 
+.recommendedListItemLink {
+  display: flex;
+  gap: $title-padding;
+  padding: $title-padding;
+}
+
 .recommendedListItemText {
   flex: 1;
+  padding-top: 0.75rem;
 }
 
 .recommendedListItemTitle {
