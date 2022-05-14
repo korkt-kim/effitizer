@@ -16,6 +16,12 @@
   font-weight: var(--font-weight-extrabold);
 }
 
+@mixin text-style-h5-bold {
+  font-size: var(--text-h5-font-size);
+  line-height: var(--text-h5-bold-line-height);
+  font-weight: var(--font-weight-extrabold);
+}
+
 @mixin text-style-h6-bold {
   font-size: var(--text-h6-font-size);
   line-height: var(--text-h6-line-height);
@@ -80,4 +86,13 @@
   font-size: var(--text-body3-font-size);
   line-height: var(--text-body3-line-height);
   font-weight: var(--font-weight-regular);
+}
+
+@mixin outlined-button {
+  @include text-style-body1-regular;
+  border: 1px solid var(--color-gray-1000);
+  background-color: transparent;
+  color: var(--color-gray-1000);
+  padding: 1rem 5rem;
+  cursor: pointer;
 }

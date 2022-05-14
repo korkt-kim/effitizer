@@ -92,12 +92,7 @@ const Home: NextPage<Props> = ({ categories, initialContentsResponse }) => {
 
         <button className={styles.subscribeButton}>
           지금 구독하기
-          <ArrowIcon
-            width={48}
-            height={48}
-            fill="currentColor"
-            stroke="currentColor"
-          />
+          <ArrowIcon width={48} height={48} color="currentColor" />
         </button>
 
         <div className={styles.coverImageWrapper}>

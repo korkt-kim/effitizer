@@ -1,13 +1,14 @@
 import { ComponentProps } from 'react';
 
-export default function ArrowIcon(props: ComponentProps<'svg'>) {
+export default function ArrowIcon({ color, ...props }: ComponentProps<'svg'>) {
   return (
     <svg
       width="48"
       height="48"
       viewBox="0 0 48 48"
-      fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      fill={color}
+      stroke={color}
       {...props}
     >
       <path

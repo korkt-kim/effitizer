@@ -15,6 +15,7 @@ declare global {
   type ContentItem = {
     id: number;
     title: string;
+    chapter: string;
     book: Book;
   };
 

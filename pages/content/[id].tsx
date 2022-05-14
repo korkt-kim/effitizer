@@ -1,5 +1,8 @@
+import classNames from 'classnames';
 import Head from 'next/head';
+import Link from 'next/link';
 import { GetServerSideProps, NextPage } from 'next/types';
+import ArrowIcon from '../../components/ArrowIcon';
 import ContentBody from '../../components/ContentBody';
 import Image from '../../components/Image';
 import Layout from '../../components/Layout';
@@ -8,8 +11,8 @@ import styles from '../../styles/Content.module.scss';
 type Props = {
   content: ContentItemDetail;
   related: {
-    previous: ContentItem;
-    next: ContentItem;
+    previous: ContentItem | null;
+    next: ContentItem | null;
     recommended: ContentItem[];
   };
 };
@@ -31,6 +34,7 @@ export const getServerSideProps: GetServerSideProps<Props> = async (
 };
 
 const Content: NextPage<Props> = ({ content, related }) => {
+  const { previous, next, recommended } = related;
   return (
     <Layout>
       <Head>
@@ -68,10 +72,63 @@ const Content: NextPage<Props> = ({ content, related }) => {
               </dd>
             </div>
           </dl>
-          <ContentBody className={styles.contentBody}>
-            {content.content}
-          </ContentBody>
+          <section className={styles.contentSection} aria-label="본문">
+            <ContentBody className={styles.contentBody}>
+              {content.content}
+            </ContentBody>
+            <section className={styles.wannaReadMore}>
+              <h5 className={styles.wannaReadMoreTitle}>
+                이 글을 더 읽고 싶으신가요?
+              </h5>
+              <p className={styles.wannaReadMoreBody}>
+                EffiTizer 멤버십을 무료로 시작해보세요!
+              </p>
+              <button className={styles.wannaReadMoreButton}>
+                EffiTizer 멤버십 시작하기
+              </button>
+            </section>
+          </section>
         </article>
+        <section aria-label="이전 글, 다음 글">
+          {Object.entries({ previous, next }).map(([key, item]) => {
+            if (!item) {
+              return null;
+            }
+            return (
+              <Link key={key} href={`/content/${item.id}`} passHref>
+                <a
+                  className={classNames(
+                    styles.previousNextContent,
+                    key === 'previous'
+                      ? styles.previousNextContentLeft
+                      : styles.previousNextContentRight
+                  )}
+                >
+                  <ArrowIcon
+                    className={classNames(
+                      styles.previousNextContentIcon,
+                      key === 'previous'
+                        ? styles.previousNextContentIconLeft
+                        : styles.previousNextContentIconRight
+                    )}
+                    width={48}
+                    height={48}
+                    color="currentColor"
+                  />
+                  <div className={styles.previousNextContentTitle}>
+                    {key === 'previous' ? '이전 글' : '다음 글'}
+                  </div>
+                  <h3 className={styles.previousNextContentBookTitle}>
+                    {item.title}
+                  </h3>
+                  <div className={styles.previousNextContentBookSubtitle}>
+                    {item.chapter}
+                  </div>
+                </a>
+              </Link>
+            );
+          })}
+        </section>
       </main>
     </Layout>
   );
