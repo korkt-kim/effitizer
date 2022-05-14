@@ -129,6 +129,38 @@ const Content: NextPage<Props> = ({ content, related }) => {
             );
           })}
         </section>
+        <section className={styles.recommendedListSection}>
+          <h2 className={styles.recommendedListTitle}>
+            이 글을 읽은 분들은 이것도 좋아하셨어요
+          </h2>
+          <ul className={styles.recommendedList}>
+            {recommended.map(({ id, title, book }) => (
+              <li key={id} className={styles.recommendedListItem}>
+                <Link href={`/content/${id}`} passHref>
+                  <a className={styles.recommendedListItemLink}>
+                    <div className={styles.recommendedListItemText}>
+                      <h3 className={styles.recommendedListItemTitle}>
+                        {title}
+                      </h3>
+                      <div className={styles.recommendedListItemBody}>
+                        {book.title} / {book.author} / {book.publisher}
+                      </div>
+                    </div>
+                    <div className={styles.recommendedListItemImageWrapper}>
+                      <Image
+                        layout="fill"
+                        src={book.coverUrl}
+                        objectFit="contain"
+                        alt="책 표지"
+                        style={{ transform: 'scale(0.75)' }}
+                      />
+                    </div>
+                  </a>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </section>
       </main>
     </Layout>
   );
