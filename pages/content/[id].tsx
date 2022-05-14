@@ -83,9 +83,11 @@ const Content: NextPage<Props> = ({ content, related }) => {
               <p className={styles.wannaReadMoreBody}>
                 EffiTizer 멤버십을 무료로 시작해보세요!
               </p>
-              <button className={styles.wannaReadMoreButton}>
-                EffiTizer 멤버십 시작하기
-              </button>
+              <Link href="/subscribe" passHref>
+                <a className={styles.wannaReadMoreButton}>
+                  EffiTizer 멤버십 시작하기
+                </a>
+              </Link>
             </section>
           </section>
         </article>

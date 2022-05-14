@@ -90,10 +90,12 @@ const Home: NextPage<Props> = ({ categories, initialContentsResponse }) => {
           </div>
         </h1>
 
-        <button className={styles.subscribeButton}>
-          지금 구독하기
-          <ArrowIcon width={48} height={48} color="currentColor" />
-        </button>
+        <Link href="/subscribe" passHref>
+          <a className={styles.subscribeButton}>
+            지금 구독하기
+            <ArrowIcon width={48} height={48} color="currentColor" />
+          </a>
+        </Link>
 
         <div className={styles.coverImageWrapper}>
           <Image
