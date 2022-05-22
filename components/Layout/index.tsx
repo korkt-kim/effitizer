@@ -1,17 +1,19 @@
 import { FC, ReactNode, useEffect, useState } from 'react';
+import classNames from 'classnames';
+import Link from 'next/link';
+import { AnimatePresence, motion } from 'framer-motion';
+import { useSession, signIn, signOut } from 'next-auth/react';
 import styles from './index.module.scss';
 import Image from '../Image';
 import InstagramIcon from '../InstagramIcon';
 import LogoType from '../LogoType';
 import MenuIcon from '../MenuIcon';
 import CloseIcon from '../CloseIcon';
-import classNames from 'classnames';
-import Link from 'next/link';
-import { AnimatePresence, motion } from 'framer-motion';
 
 const emailAddress = 'interaction0318@naver.com';
 
 const Layout: FC<{ children?: ReactNode }> = ({ children }) => {
+  const { data: session } = useSession();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
@@ -83,9 +85,15 @@ const Layout: FC<{ children?: ReactNode }> = ({ children }) => {
                       <Link href="/subscribe">멤버십 가입</Link>
                     </li>
                   </ul>
-                  <Link href="/login" passHref={true}>
-                    <a className={styles.loginButton}>로그인</a>
-                  </Link>
+                  {session ? (
+                    <Link href="/mypage" passHref={true}>
+                      <a className={styles.loginButton}>마이페이지</a>
+                    </Link>
+                  ) : (
+                    <Link href="/login" passHref={true}>
+                      <a className={styles.loginButton}>로그인</a>
+                    </Link>
+                  )}
                 </div>
               </motion.nav>
             </>

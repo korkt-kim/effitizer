@@ -116,8 +116,11 @@ $menu-zindex: 100;
   @include text-style-subtitle1-semibold;
   display: block;
   margin-top: 2rem;
+  border: 0;
   background-color: var(--color-primary);
-  color: var(--color-black);
+  cursor: pointer;
   padding: 0.625rem;
+  width: 100%;
   text-align: center;
+  color: var(--color-black);
 }

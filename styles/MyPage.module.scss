@@ -9,12 +9,6 @@
   margin-bottom: 3rem;
 }
 
-.loginButtons {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.loginButton {
+.logoutButton {
   @include outlined-button;
 }
