@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import { NextPage } from 'next';
 import { getProviders, signIn } from 'next-auth/react';
 import Head from 'next/head';
@@ -10,6 +11,12 @@ export async function getServerSideProps() {
     props: { providers },
   };
 }
+
+const providerNames = {
+  google: 'Google',
+  kakao: '카카오',
+  naver: '네이버',
+};
 
 const LogIn: NextPage<{
   providers: Awaited<ReturnType<typeof getProviders>>;
@@ -27,17 +34,20 @@ const LogIn: NextPage<{
       <main className={styles.main}>
         <h1 className={styles.title}>로그인</h1>
         <div className={styles.loginButtons}>
-          {Object.values(providers || {}).map((provider) => (
-            <div key={provider.name}>
+          {Object.values(providers || {}).map((provider) => {
+            return (
               <button
+                key={provider.name}
                 onClick={() => signIn(provider.id, { callbackUrl: '/' })}
                 type="button"
-                className={styles.loginButton}
+                className={classNames(styles.loginButton, styles[provider.id])}
               >
-                {provider.name}로 로그인
+                {providerNames[provider.id as keyof typeof providerNames] ||
+                  provider.name}
+                로 로그인
               </button>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </main>
     </Layout>

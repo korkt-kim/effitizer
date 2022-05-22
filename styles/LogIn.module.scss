@@ -1,6 +1,9 @@
 @import 'mixins';
 
 .main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   padding: 4rem 1.25rem;
 }
 
@@ -13,8 +16,23 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 24rem;
+  align-items: stretch;
+  gap: 1rem;
 }
 
 .loginButton {
   @include outlined-button;
+  font-weight: 500;
+}
+
+.loginButton.kakao {
+  background-color: rgb(254, 229, 0);
+  border-width: 0;
+}
+
+.loginButton.naver {
+  background-color: #04c75a;
+  border-width: 0;
+  color: white;
 }

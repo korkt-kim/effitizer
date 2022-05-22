@@ -10,5 +10,13 @@ export default NextAuth({
       clientId: process.env.GOOGLE_ID,
       clientSecret: process.env.GOOGLE_SECRET,
     }),
+    KakaoProvider({
+      clientId: process.env.KAKAO_ID,
+      clientSecret: process.env.KAKAO_SECRET,
+    }),
+    NaverProvider({
+      clientId: process.env.NAVER_ID,
+      clientSecret: process.env.NAVER_SECRET,
+    }),
   ],
 });

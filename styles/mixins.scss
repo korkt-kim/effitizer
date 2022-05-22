@@ -92,6 +92,7 @@
   @include text-style-body1-regular;
   display: inline-block;
   border: 1px solid var(--color-gray-1000);
+  border-radius: 2px;
   background-color: transparent;
   color: var(--color-gray-1000);
   padding: 1rem 5rem;
