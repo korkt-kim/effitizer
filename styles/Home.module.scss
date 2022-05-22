@@ -59,6 +59,7 @@ $category-list-gap: 0.75rem;
   width: 8rem;
   height: 8rem;
   transition: 0.2s;
+  transition-property: color, background-color;
 
   @include text-style-body2-bold;
 
