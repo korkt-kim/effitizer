@@ -26,6 +26,10 @@ $menu-zindex: 100;
   background-color: var(--color-accent-orange-500);
   padding: 0 $container-padding;
   color: white;
+
+  @include for-tablet-portrait-up {
+    margin-top: 11.75rem;
+  }
 }
 
 .aboutEffitizer {

@@ -9,6 +9,7 @@ import PlusIcon from '../components/PlusIcon';
 import classNames from 'classnames';
 import { useInfiniteQuery } from 'react-query';
 import Layout from '../components/Layout';
+import useMediaQuery, { useIsTabletPortraitUp } from '../utils/useMediaQuery';
 
 type Props = {
   categories: CategoryList;
@@ -70,6 +71,8 @@ const Home: NextPage<Props> = ({ categories, initialContentsResponse }) => {
     ? data.pages.flatMap((response) => response.contents)
     : [];
 
+  const isTabletPortraitUp = useIsTabletPortraitUp();
+
   return (
     <Layout>
       <Head>
@@ -86,7 +89,9 @@ const Home: NextPage<Props> = ({ categories, initialContentsResponse }) => {
             세상에서 가장 가벼운 책 한 조각
           </div>
           <div className={styles.titleText}>
-            쉽고 빠른 독서를 위한 숏폼 전자책 서비스, 에피타이저
+            쉽고 빠른 독서를 위한
+            <br className={styles.responsiveLineBreak} /> 숏폼 전자책 서비스,
+            에피타이저
           </div>
         </h1>
 
@@ -98,11 +103,11 @@ const Home: NextPage<Props> = ({ categories, initialContentsResponse }) => {
         </Link>
 
         <div className={styles.coverImageWrapper}>
-          <Image
-            src="/cover-mobile.jpg"
-            layout="responsive"
-            width={1242}
-            height={1200}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={
+              isTabletPortraitUp ? '/cover-desktop.jpg' : '/cover-mobile.jpg'
+            }
             alt=""
           />
         </div>
