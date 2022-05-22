@@ -9,6 +9,7 @@ import InstagramIcon from '../InstagramIcon';
 import LogoType from '../LogoType';
 import MenuIcon from '../MenuIcon';
 import CloseIcon from '../CloseIcon';
+import ResponsiveLinebreak from '../ResponsiveLineBreak';
 
 const emailAddress = 'interaction0318@naver.com';
 
@@ -102,39 +103,50 @@ const Layout: FC<{ children?: ReactNode }> = ({ children }) => {
       </header>
       {children}
       <footer className={styles.footer}>
-        <div className={styles.aboutEffitizer}>
-          <Image src="/logo.png" alt="로고" width={76} height={89} />
-          <p>
-            식전에 가볍게 먹는 에피타이저처럼 ‘쉽고 빠른 독서를 위한 숏폼 전자책
-            서비스’를 제공하고 있습니다.
-          </p>
-        </div>
-        <ul className={styles.footerLinks}>
-          <li>
-            <a>서비스 소개</a>
-          </li>
-          <li>
-            <a>개인정보처리방침</a>
-          </li>
-          <li>
-            <a>고객센터</a>
-          </li>
-          <li>
-            <a>이용약관</a>
-          </li>
-        </ul>
-        <div className={styles.companyInfo}>
-          <div>대표: 노상호 | 사업자등록번호 : 000-00-00000</div>
-          <div>
-            이메일 : <a href={'mailto:' + emailAddress}>{emailAddress}</a>
+        <div className={styles.footerContentWrapper}>
+          <div className={styles.aboutEffitizer}>
+            <img src="/logo.png" alt="로고" className={styles.logo} />
+            <p>
+              식전에 가볍게 먹는 에피타이저처럼
+              <ResponsiveLinebreak /> ‘쉽고 빠른 독서를 위한 숏폼 전자책
+              서비스’를 제공하고 있습니다.
+            </p>
+          </div>
+          <div className={styles.footerInfo}>
+            <ul className={styles.footerLinks}>
+              <li>
+                <a>서비스 소개</a>
+              </li>
+              <li>
+                <a>개인정보처리방침</a>
+              </li>
+              <li>
+                <a>고객센터</a>
+              </li>
+              <li>
+                <a>이용약관</a>
+              </li>
+            </ul>
+            <div className={styles.companyInfo}>
+              <div>대표: 노상호 | 사업자등록번호 : 000-00-00000</div>
+              <div>
+                이메일 : <a href={'mailto:' + emailAddress}>{emailAddress}</a>
+              </div>
+            </div>
           </div>
         </div>
-        <a href="https://instagr.am/effitizer" target="_blank" rel="noreferrer">
-          <InstagramIcon aria-label="Instagram" />
-        </a>
-        <small className={styles.copyright}>
-          Copyright © 2021 WASD Pte. Ltd. All rights reserved
-        </small>
+        <div className={styles.footerCopyrightWrapper}>
+          <a
+            href="https://instagr.am/effitizer"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <InstagramIcon aria-label="Instagram" />
+          </a>
+          <small className={styles.copyright}>
+            Copyright © 2022 EffiTizer. All rights reserved.
+          </small>
+        </div>
       </footer>
     </div>
   );

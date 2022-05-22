@@ -1,0 +1,9 @@
+@import '../../styles/mixins';
+
+.responsiveLineBreak {
+  display: none;
+
+  @include for-tablet-portrait-up {
+    display: initial;
+  }
+}

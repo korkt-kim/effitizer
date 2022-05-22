@@ -10,6 +10,7 @@ import classNames from 'classnames';
 import { useInfiniteQuery } from 'react-query';
 import Layout from '../components/Layout';
 import useMediaQuery, { useIsTabletPortraitUp } from '../utils/useMediaQuery';
+import ResponsiveLinebreak from '../components/ResponsiveLineBreak';
 
 type Props = {
   categories: CategoryList;
@@ -90,8 +91,7 @@ const Home: NextPage<Props> = ({ categories, initialContentsResponse }) => {
           </div>
           <div className={styles.titleText}>
             쉽고 빠른 독서를 위한
-            <br className={styles.responsiveLineBreak} /> 숏폼 전자책 서비스,
-            에피타이저
+            <ResponsiveLinebreak /> 숏폼 전자책 서비스, 에피타이저
           </div>
         </h1>
 
