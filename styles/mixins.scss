@@ -10,6 +10,12 @@
   font-weight: var(--font-weight-extrabold);
 }
 
+@mixin text-style-h2-bold {
+  font-size: var(--text-h2-font-size);
+  line-height: var(--text-h2-bold-line-height);
+  font-weight: var(--font-weight-extrabold);
+}
+
 @mixin text-style-h3-bold {
   font-size: var(--text-h3-font-size);
   line-height: var(--text-h3-line-height);
@@ -26,6 +32,18 @@
   font-size: var(--text-h5-font-size);
   line-height: var(--text-h5-bold-line-height);
   font-weight: var(--font-weight-extrabold);
+}
+
+@mixin text-style-h5-regular {
+  font-size: var(--text-h5-font-size);
+  line-height: var(--text-h5-regular-line-height);
+  font-weight: var(--font-weight-regular);
+}
+
+@mixin text-style-h6-regular {
+  font-size: var(--text-h6-font-size);
+  line-height: var(--text-h6-line-height);
+  font-weight: var(--font-weight-regular);
 }
 
 @mixin text-style-h6-bold {
@@ -103,6 +121,11 @@
   color: var(--color-gray-1000);
   padding: 1rem 5rem;
   cursor: pointer;
+
+  @include for-tablet-portrait-up {
+    @include text-style-subtitle1-regular;
+    padding: 1.5rem 5.5rem;
+  }
 }
 
 @mixin for-tablet-portrait-up {

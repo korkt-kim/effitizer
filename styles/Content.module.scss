@@ -1,6 +1,7 @@
 @import 'mixins';
 
 $title-padding: 1.25rem;
+$container-width: 76.875rem;
 
 .bookCoverBackground {
   margin-bottom: 2.5rem;
@@ -21,6 +22,10 @@ $title-padding: 1.25rem;
   @include text-style-h4-bold;
   margin-bottom: 2rem;
   padding: 0 $title-padding;
+
+  @include for-tablet-portrait-up {
+    @include text-style-h1-bold;
+  }
 }
 
 .bookInfo {
@@ -42,10 +47,18 @@ $title-padding: 1.25rem;
   @include text-style-body1-bold;
   margin-right: 0.5rem;
   color: var(--color-accent-orange-500);
+
+  @include for-tablet-portrait-up {
+    @include text-style-h6-bold;
+  }
 }
 
 .bookInfoItemBody {
   @include text-style-body1-medium;
+
+  @include for-tablet-portrait-up {
+    @include text-style-h6-regular;
+  }
 }
 
 .contentSection {
@@ -55,9 +68,17 @@ $title-padding: 1.25rem;
 .contentBody {
   @include text-style-subtitle1-regular;
   position: relative;
+  align-self: center;
+  margin-right: auto;
   margin-bottom: 8rem;
+  margin-left: auto;
   padding: 3rem 2.5rem;
+  max-width: $container-width;
   line-height: 1.8;
+
+  @include for-tablet-portrait-up {
+    @include text-style-h5-regular;
+  }
 }
 
 .contentBody::after {
@@ -86,11 +107,19 @@ $title-padding: 1.25rem;
 .wannaReadMoreTitle {
   @include text-style-h5-bold;
   margin-bottom: 1rem;
+
+  @include for-tablet-portrait-up {
+    @include text-style-h2-bold;
+  }
 }
 
 .wannaReadMoreBody {
   @include text-style-body1-regular;
   margin-bottom: 3.5rem;
+
+  @include for-tablet-portrait-up {
+    @include text-style-subtitle1-regular;
+  }
 }
 
 .wannaReadMoreButton {
