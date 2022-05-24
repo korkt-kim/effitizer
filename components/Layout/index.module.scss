@@ -5,11 +5,18 @@ $menu-zindex: 100;
 
 .header {
   display: flex;
+  position: relative;
   flex-direction: row;
   justify-content: space-between;
   background-color: var(--color-black);
   padding: 1.25rem;
   color: var(--color-white);
+}
+
+.openMenuButton {
+  @include for-tablet-portrait-up {
+    display: none;
+  }
 }
 
 .iconButton {
@@ -177,7 +184,9 @@ $menu-zindex: 100;
 
 .loginButton {
   @include text-style-subtitle1-semibold;
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin-top: 2rem;
   border: 0;
   background-color: var(--color-primary);
@@ -186,4 +195,45 @@ $menu-zindex: 100;
   width: 100%;
   text-align: center;
   color: var(--color-black);
+}
+
+.desktopMenu {
+  display: none;
+
+  @include for-tablet-portrait-up {
+    display: block;
+  }
+}
+
+.desktopMenuContainer {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 20rem);
+  height: 100%;
+  max-width: 76.875rem;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 0 2.25rem;
+}
+
+.desktopMenuItem {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 2.25rem;
+  height: 100%;
+  white-space: nowrap;
+}
+
+.desktopMenu .loginButton {
+  @include text-style-body1-regular;
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin-top: 0;
+  width: 10rem;
+  height: 100%;
 }

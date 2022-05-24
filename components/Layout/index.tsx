@@ -35,13 +35,35 @@ const Layout: FC<{ children?: ReactNode }> = ({ children }) => {
             <LogoType fill="currentColor" aria-label="EffiTizer" />
           </a>
         </Link>
-        <button type="button" className={styles.iconButton}>
+        <button
+          type="button"
+          className={classNames(styles.iconButton, styles.openMenuButton)}
+        >
           <MenuIcon
             fill="currentColor"
             aria-label="메뉴 열기"
             onClick={() => setIsMenuOpen(true)}
           />
         </button>
+        <nav className={styles.desktopMenu}>
+          <div className={styles.desktopMenuContainer}>
+            <Link href="/" passHref>
+              <a className={styles.desktopMenuItem}>전체 콘텐츠</a>
+            </Link>
+            <Link href="/subscribe" passHref>
+              <a className={styles.desktopMenuItem}>멤버십 가입</a>
+            </Link>
+          </div>
+          {session ? (
+            <Link href="/mypage" passHref={true}>
+              <a className={styles.loginButton}>마이페이지</a>
+            </Link>
+          ) : (
+            <Link href="/login" passHref={true}>
+              <a className={styles.loginButton}>로그인</a>
+            </Link>
+          )}
+        </nav>
         <AnimatePresence>
           {isMenuOpen && (
             <>
@@ -60,9 +82,6 @@ const Layout: FC<{ children?: ReactNode }> = ({ children }) => {
               <motion.nav
                 key="menu"
                 className={styles.menu}
-                // initial={{ translateX: '100%' }}
-                // animate={{ translateX: 0 }}
-                // exit={{ translateX: '100%' }}
                 initial={{ scaleX: 0, transformOrigin: 'right' }}
                 animate={{ scaleX: 1 }}
                 exit={{ scaleX: 0 }}
