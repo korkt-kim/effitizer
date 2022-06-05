@@ -122,10 +122,11 @@ $container-width: 76.875rem;
   margin-left: auto;
   padding: 3rem 2.5rem;
   max-width: $container-width;
-  line-height: 1.8;
+  line-height: 2 !important;
 
   @include for-tablet-portrait-up {
     @include text-style-h5-regular;
+    padding: 5rem 0;
   }
 }
 
@@ -174,6 +175,28 @@ $container-width: 76.875rem;
   @include outlined-button;
 }
 
+.prevNextSection {
+  @include for-tablet-wide {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    border-top: 1px solid var(--color-black);
+    border-bottom: 1px solid var(--color-black);
+    overflow: hidden;
+
+    &::after {
+      content: '';
+      display: block;
+      height: 100%;
+      background-color: var(--color-black);
+      width: 1px;
+      left: 50%;
+      position: absolute;
+      top: 0;
+    }
+  }
+}
+
 .previousNextContent {
   position: relative;
   display: block;
@@ -181,6 +204,23 @@ $container-width: 76.875rem;
   border-bottom: 1px solid var(--color-black);
   padding: 1.5rem 5.75rem;
   color: var(--color-gray-1000);
+
+  @include for-tablet-wide {
+    width: 50%;
+    flex: none;
+    border-top: 0;
+    border-bottom: 0;
+    padding: 2.5rem;
+    width: calc(min(50vw, 38.4375rem) + 2.5rem);
+  }
+}
+
+.previousNextContentPlaceholder {
+  display: none;
+
+  @include for-tablet-wide {
+    display: block;
+  }
 }
 
 .previousNextContentRight {
@@ -190,15 +230,29 @@ $container-width: 76.875rem;
 .previousNextContentIcon {
   position: absolute;
   top: 1.5rem;
+
+  @include for-tablet-wide {
+    width: 72px;
+    height: 72px;
+    top: calc(50% - 36px);
+  }
 }
 
 .previousNextContentIconLeft {
   left: 1.25rem;
   transform: rotateZ(180deg);
+
+  @include for-tablet-wide {
+    left: -10rem;
+  }
 }
 
 .previousNextContentIconRight {
   right: 1.25rem;
+
+  @include for-tablet-wide {
+    right: -10rem;
+  }
 }
 
 .previousNextContent + .previousNextContent {
@@ -209,16 +263,30 @@ $container-width: 76.875rem;
   @include text-style-body1-bold;
   margin-bottom: 0.5rem;
   color: var(--color-primary-600);
+
+  @include for-tablet-wide {
+    @include text-style-h6-bold;
+    margin-bottom: 1.5rem;
+  }
 }
 
 .previousNextContentBookTitle {
   @include text-style-h6-bold;
   margin-bottom: 0.375rem;
+
+  @include for-tablet-wide {
+    @include text-style-h4-bold;
+    margin-bottom: 1rem;
+  }
 }
 
 .previousNextContentBookSubtitle {
   @include text-style-body1-regular;
   color: var(--color-gray-700);
+
+  @include for-tablet-wide {
+    @include text-style-subtitle1-regular;
+  }
 }
 
 .recommendedListSection {

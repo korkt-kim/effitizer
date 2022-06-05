@@ -98,10 +98,21 @@ const Content: NextPage<Props> = ({ content, related }) => {
             </section>
           </section>
         </article>
-        <section aria-label="이전 글, 다음 글">
+        <section
+          aria-label="이전 글, 다음 글"
+          className={styles.prevNextSection}
+        >
           {Object.entries({ previous, next }).map(([key, item]) => {
             if (!item) {
-              return null;
+              return (
+                <div
+                  key={key}
+                  className={classNames(
+                    styles.previousNextContent,
+                    styles.previousNextContentPlaceholder
+                  )}
+                />
+              );
             }
             return (
               <Link key={key} href={`/content/${item.id}`} passHref>

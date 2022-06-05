@@ -144,3 +144,9 @@
     @content;
   }
 }
+
+@mixin for-tablet-wide {
+  @media (min-width: 64rem) {
+    @content;
+  }
+}
