@@ -1,3 +1,8 @@
+@mixin margin-horizontal($margin) {
+  margin-left: $margin;
+  margin-right: $margin;
+}
+
 @mixin text-style-body1-bold {
   font-size: var(--text-body1-font-size);
   line-height: var(--text-body1-line-height);
@@ -130,6 +135,12 @@
 
 @mixin for-tablet-portrait-up {
   @media (min-width: 37.5rem) {
+    @content;
+  }
+}
+
+@mixin for-tablet-narrow {
+  @media (max-width: 64rem) {
     @content;
   }
 }

@@ -1,17 +1,57 @@
 @import 'mixins';
 
 $title-padding: 1.25rem;
+$title-padding-desktop: 4rem;
 $container-width: 76.875rem;
+
+.headerSection {
+  border-bottom: 1px solid var(--color-gray-1000);
+
+  @include for-tablet-portrait-up {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    @include margin-horizontal(auto);
+    max-width: var(--container-width);
+  }
+}
+
+.headerText {
+  @include for-tablet-portrait-up {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-width: 37.5rem;
+    padding: 5rem $title-padding-desktop;
+  }
+}
 
 .bookCoverBackground {
   margin-bottom: 2.5rem;
   padding: 3.125rem 0;
   background-color: var(--color-accent-yellow-500);
+
+  @include for-tablet-portrait-up {
+    flex: none;
+    margin-bottom: 0;
+    padding: min(5.3625vw, 4.125rem) 0;
+    width: min(39vw, 30rem);
+    height: min(39vw, 30rem);
+  }
+
+  @include for-tablet-narrow {
+    width: 100%;
+  }
 }
 
 .bookCoverParent {
   position: relative;
   height: 14.5rem;
+
+  @include for-tablet-portrait-up {
+    height: 100%;
+  }
 }
 
 .bookCoverParent img {
@@ -25,6 +65,8 @@ $container-width: 76.875rem;
 
   @include for-tablet-portrait-up {
     @include text-style-h1-bold;
+    margin-bottom: 3.5rem;
+    padding: 0;
   }
 }
 
@@ -35,18 +77,24 @@ $container-width: 76.875rem;
   padding: 0 $title-padding;
   gap: 0.625rem 1rem;
   padding-bottom: 2.5rem;
-  border-bottom: 1px solid var(--color-gray-1000);
+
+  @include for-tablet-portrait-up {
+    padding: 0;
+    flex-direction: column;
+  }
 }
 
 .bookInfoItem {
   display: flex;
   align-items: baseline;
+  flex-wrap: wrap;
 }
 
 .bookInfoItemLabel {
   @include text-style-body1-bold;
   margin-right: 0.5rem;
   color: var(--color-accent-orange-500);
+  white-space: nowrap;
 
   @include for-tablet-portrait-up {
     @include text-style-h6-bold;

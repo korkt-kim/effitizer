@@ -44,34 +44,41 @@ const Content: NextPage<Props> = ({ content, related }) => {
       </Head>
       <main>
         <article>
-          <h1>
+          <section className={styles.headerSection} aria-label="제목">
             <div className={styles.bookCoverBackground}>
               <div className={styles.bookCoverParent}>
                 <Image
                   src={content.book.coverUrl}
                   alt="책 표지"
                   layout="fill"
+                  objectFit="contain"
                 />
               </div>
             </div>
-            <div className={styles.title}>{content.title}</div>
-          </h1>
-          <dl className={styles.bookInfo}>
-            <div className={styles.bookInfoItem}>
-              <dt className={styles.bookInfoItemLabel}>책 제목</dt>
-              <dd className={styles.bookInfoItemBody}>{content.book.title}</dd>
+            <div className={styles.headerText}>
+              <h1 className={styles.title}>{content.title}</h1>
+              <dl className={styles.bookInfo}>
+                <div className={styles.bookInfoItem}>
+                  <dt className={styles.bookInfoItemLabel}>책 제목</dt>
+                  <dd className={styles.bookInfoItemBody}>
+                    {content.book.title}
+                  </dd>
+                </div>
+                <div className={styles.bookInfoItem}>
+                  <dt className={styles.bookInfoItemLabel}>저자</dt>
+                  <dd className={styles.bookInfoItemBody}>
+                    {content.book.author}
+                  </dd>
+                </div>
+                <div className={styles.bookInfoItem}>
+                  <dt className={styles.bookInfoItemLabel}>출판사</dt>
+                  <dd className={styles.bookInfoItemBody}>
+                    {content.book.publisher}
+                  </dd>
+                </div>
+              </dl>
             </div>
-            <div className={styles.bookInfoItem}>
-              <dt className={styles.bookInfoItemLabel}>저자</dt>
-              <dd className={styles.bookInfoItemBody}>{content.book.author}</dd>
-            </div>
-            <div className={styles.bookInfoItem}>
-              <dt className={styles.bookInfoItemLabel}>출판사</dt>
-              <dd className={styles.bookInfoItemBody}>
-                {content.book.publisher}
-              </dd>
-            </div>
-          </dl>
+          </section>
           <section className={styles.contentSection} aria-label="본문">
             <ContentBody className={styles.contentBody}>
               {content.content}

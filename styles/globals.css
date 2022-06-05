@@ -91,6 +91,8 @@
 
   --text-body5-font-size: 0.625rem;
   --text-body5-line-height: 1.6;
+
+  --container-width: 76.875rem;
 }
 
 html,
