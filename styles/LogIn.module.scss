@@ -4,7 +4,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 4rem 1.25rem;
+  justify-content: center;
+  height: calc(100vh - 10rem);
 }
 
 .title {
@@ -17,13 +18,17 @@
   flex-direction: column;
   align-items: center;
   width: 24rem;
-  align-items: stretch;
   gap: 1rem;
 }
 
 .loginButton {
   @include outlined-button;
-  font-weight: 500;
+  position: relative;
+  width: 20rem;
+
+  @include for-tablet-portrait-up {
+    width: 24rem;
+  }
 }
 
 .loginButton.kakao {
@@ -35,4 +40,15 @@
   background-color: #04c75a;
   border-width: 0;
   color: white;
+}
+
+.loginButtonIcon {
+  position: absolute;
+  left: 1rem;
+  width: 24px;
+  height: 24px;
+
+  @include for-tablet-portrait-up {
+    left: 2rem;
+  }
 }
