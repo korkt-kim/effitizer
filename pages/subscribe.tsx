@@ -31,6 +31,10 @@ const Subscribe: NextPage<{}> = ({}) => {
 
   const dayAfterWeek = addWeeks(new Date(), 1);
 
+  const onFormSubmit: ComponentProps<'form'>['onSubmit'] = (event) => {
+    event.preventDefault();
+  };
+
   if (status === 'loading') {
     return <LoadingSession />;
   }
@@ -67,7 +71,7 @@ const Subscribe: NextPage<{}> = ({}) => {
             </dd>
           </div>
         </dl>
-        <form className={styles.paymentInfoForm}>
+        <form className={styles.paymentInfoForm} onSubmit={onFormSubmit}>
           <h2 className={styles.paymentInfoFormTitle}>결제 정보 입력</h2>
           <div
             className={classNames(
