@@ -82,6 +82,7 @@
 .birthdayFieldsetLabel {
   @include text-style-body2-bold;
   margin-bottom: 0.5rem;
+  color: var(--color-gray-700);
 }
 
 .input {
