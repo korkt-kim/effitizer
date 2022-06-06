@@ -32,7 +32,7 @@ const Layout: FC<{ children?: ReactNode }> = ({ children }) => {
       <header className={styles.header}>
         <Link href="/" passHref>
           <a>
-            <LogoType fill="currentColor" aria-label="EffiTizer" />
+            <LogoType fill="currentColor" />
           </a>
         </Link>
         <button

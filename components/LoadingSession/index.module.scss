@@ -1,0 +1,21 @@
+.container {
+  padding: 1.25rem;
+}
+
+.loadingContainer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  width: 4rem;
+  height: 4rem;
+  justify-content: space-around;
+}
+
+.loadingCircle {
+  width: 22%;
+  height: 22%;
+  background-color: var(--color-black);
+  border-radius: 50%;
+}
