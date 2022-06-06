@@ -1,0 +1,110 @@
+@import 'mixins';
+
+.main {
+  @include margin-horizontal(auto);
+  max-width: 40rem;
+  padding: 0 1.25rem;
+  padding-top: 6rem;
+}
+
+.title {
+  @include text-style-h3-bold;
+  margin-bottom: 3rem;
+}
+
+.subscribeOption {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  gap: 1rem;
+  border: 1px solid var(--color-primary);
+  @include text-style-body1-bold;
+}
+
+.subscribeOptionPrice {
+  @include text-style-body1-regular;
+}
+
+.paymentInfo {
+  margin-top: 2rem;
+}
+
+.paymentInfoRow {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+  @include text-style-subtitle1-semibold;
+}
+
+.paymentInfoForm {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin-top: 1rem;
+  border: 1px solid var(--color-gray-300);
+  padding: 2rem 1.5rem;
+  gap: 1.5rem;
+}
+
+.paymentInfoFormTitle {
+  @include text-style-subtitle1-semibold;
+}
+
+.paymentInfoFormField {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.paymentInfoFormColumnCCNumber {
+  grid-column: 1 / span 2;
+}
+
+.paymentInfoFormFieldLabel {
+  @include text-style-body2-regular;
+  color: var(--color-gray-700);
+}
+
+.birthdayFieldset {
+  grid-column: 1 / -1;
+  border: 0;
+}
+
+.birthdayFieldsetRow {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+
+.paymentInfoFormBirthYearField {
+  grid-column: 1 / span 2;
+}
+
+.birthdayFieldsetLabel {
+  @include text-style-body2-bold;
+  margin-bottom: 0.5rem;
+}
+
+.input {
+  appearance: none;
+  border: 0;
+  border-bottom: 1px solid var(--color-gray-300);
+  padding: 0.5rem 0;
+}
+
+.subscribeButtonRow {
+  display: flex;
+  justify-content: center;
+  grid-column: 1 / -1;
+}
+
+.subscribeButton {
+  grid-column: 2 / span 1;
+  margin-top: 1.5rem;
+  border: 0;
+  border-radius: 2px;
+  background-color: var(--color-black);
+  cursor: pointer;
+  padding: 1rem 3rem;
+  color: white;
+  @include text-style-body1-regular;
+}
