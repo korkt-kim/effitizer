@@ -2,6 +2,7 @@ import classNames from 'classnames';
 import { NextPage } from 'next';
 import { getProviders, signIn } from 'next-auth/react';
 import Head from 'next/head';
+import { useRouter } from 'next/router';
 import { SVGProps } from 'react';
 import Layout from '../components/Layout';
 import styles from '../styles/LogIn.module.scss';
@@ -66,6 +67,8 @@ const providerInfo = {
 const LogIn: NextPage<{
   providers: Awaited<ReturnType<typeof getProviders>>;
 }> = ({ providers }) => {
+  const { query } = useRouter();
+
   return (
     <Layout>
       <Head>
@@ -85,7 +88,14 @@ const LogIn: NextPage<{
             return (
               <button
                 key={provider.name}
-                onClick={() => signIn(provider.id, { callbackUrl: '/' })}
+                onClick={() =>
+                  signIn(provider.id, {
+                    callbackUrl:
+                      typeof query.callbackUrl === 'string'
+                        ? query.callbackUrl
+                        : '/',
+                  })
+                }
                 type="button"
                 className={classNames(styles.loginButton, styles[provider.id])}
               >
