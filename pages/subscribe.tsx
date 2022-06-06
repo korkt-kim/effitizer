@@ -6,8 +6,9 @@ import LoadingSession from '../components/LoadingSession';
 import Radio from '../components/Radio';
 import styles from '../styles/Subscribe.module.scss';
 import InputMask from 'react-input-mask';
-import { ComponentProps } from 'react';
+import { ComponentProps, useState } from 'react';
 import classNames from 'classnames';
+import addWeeks from 'date-fns/addWeeks';
 
 const NumberInput = (props: ComponentProps<typeof InputMask>) => (
   <InputMask
@@ -19,8 +20,16 @@ const NumberInput = (props: ComponentProps<typeof InputMask>) => (
   />
 );
 
+const dateFormat = Intl.DateTimeFormat('ko-KR', {
+  year: 'numeric',
+  month: 'numeric',
+  day: 'numeric',
+});
+
 const Subscribe: NextPage<{}> = ({}) => {
   const { status } = useSession({ required: true });
+
+  const dayAfterWeek = addWeeks(new Date(), 1);
 
   if (status === 'loading') {
     return <LoadingSession />;
@@ -53,7 +62,9 @@ const Subscribe: NextPage<{}> = ({}) => {
           </div>
           <div className={styles.paymentInfoRow}>
             <dt className={styles.paymentInfoRowLabel}>첫번째 결제일</dt>
-            <dd className={styles.paymentInfoRowContent}>2022년 6월 12일</dd>
+            <dd className={styles.paymentInfoRowContent}>
+              {dateFormat.format(dayAfterWeek)}
+            </dd>
           </div>
         </dl>
         <form className={styles.paymentInfoForm}>
