@@ -291,16 +291,34 @@ $container-width: 76.875rem;
 
 .recommendedListSection {
   padding-top: 5rem;
+
+  @include for-tablet-wide {
+    @include margin-horizontal(auto);
+    padding-top: 9.75rem;
+    max-width: var(--container-width);
+  }
 }
 
 .recommendedListTitle {
   @include text-style-h6-bold;
   margin-bottom: 0.75rem;
   padding: 0 $title-padding;
+
+  @include for-tablet-wide {
+    @include text-style-h4-bold;
+    padding: 0;
+    margin-bottom: 4rem;
+  }
 }
 
 .recommendedList {
   list-style-type: none;
+
+  @include for-tablet-wide {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 6.5625rem 5.75rem;
+  }
 }
 
 .recommendedListItem {
@@ -316,12 +334,33 @@ $container-width: 76.875rem;
   width: calc(100vw - 1.25rem);
   height: 1px;
   content: '';
+
+  @include for-tablet-wide {
+    display: none;
+  }
+}
+
+.recommendedListItem:nth-child(2n + 1):not(:first-child)::before {
+  @include for-tablet-wide {
+    display: block;
+    position: absolute;
+    top: -3.25rem;
+    left: 0;
+    background-color: var(--color-gray-300);
+    width: calc(200% + 5.75rem);
+    height: 1px;
+    content: '';
+  }
 }
 
 .recommendedListItemLink {
   display: flex;
   gap: $title-padding;
   padding: $title-padding;
+
+  @include for-tablet-wide {
+    padding: 0;
+  }
 }
 
 .recommendedListItemText {
@@ -332,6 +371,10 @@ $container-width: 76.875rem;
 .recommendedListItemTitle {
   @include text-style-subtitle1-bold;
   margin-bottom: 0.25rem;
+
+  @include for-tablet-wide {
+    @include text-style-h6-bold;
+  }
 }
 
 .recommendedListItemBody {
@@ -343,6 +386,11 @@ $container-width: 76.875rem;
   position: relative;
   width: 6.5rem;
   height: 6.5rem;
+
+  @include for-tablet-wide {
+    width: 9.75rem;
+    height: 9.75rem;
+  }
 }
 
 .recommendedListItem:nth-child(5n + 1) .recommendedListItemImageWrapper {
